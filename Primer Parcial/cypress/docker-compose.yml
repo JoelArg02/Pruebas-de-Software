@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  react-app:
+    image: node:20
+    container_name: react-app
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    command: >
+      sh -c "yarn install &&
+             yarn start"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  cypress:
+    image: cypress/included:12.5.1
+    container_name: cypress
+    working_dir: /e2e
+    volumes:
+      - ./cypress:/e2e/cypress
+      - ./cypress.config.js:/e2e/cypress.config.js
+      - ./package.json:/e2e/package.json
+      - ./node_modules:/e2e/node_modules
+    environment:
+      - CYPRESS_baseUrl=http://react-app:3000
+    depends_on:
+      - react-app
+    entrypoint: [ "cypress", "run" ]

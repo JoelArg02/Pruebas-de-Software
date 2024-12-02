@@ -21,6 +21,9 @@ export default function Header() {
             <Nav.Link as={Link} to="/contact">
               Contactanos
             </Nav.Link>
+            <Nav.Link as={Link} to="/api">
+              API
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

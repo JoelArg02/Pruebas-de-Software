@@ -1,4 +1,4 @@
-describe('Home Page Tests', () => {
+describe('Add Task Tests', () => {
     beforeEach(() => {
         cy.visit('/');
     });
@@ -7,7 +7,7 @@ describe('Home Page Tests', () => {
         cy.title().should('eq', 'Grupo 3 - Inicio');
     });
 
-    it('Should add a task and display it in the table', () => {
+    it('Debe agregar una tarea y mostrarla en la tabla', () => {
         const task = 'Test Task';
 
         cy.get('input[placeholder="Escribe tu tarea..."]').should('exist').type(task);
@@ -15,12 +15,13 @@ describe('Home Page Tests', () => {
 
         cy.get('table tbody tr', { timeout: 5000 }).should('have.length', 1).and('contain', task);
     });
-    it('Should not add a task if the input is empty', () => {
+
+    it('No debe agregar una tarea si el campo está vacío', () => {
         cy.contains('Agregar').click();
         cy.get('table tbody tr').should('have.length', 0);
     });
 
-    it('Should add multiple tasks and display them in order', () => {
+    it('Debe agregar múltiples tareas y mostrarlas en orden', () => {
         const tasks = ['Task 1', 'Task 2', 'Task 3'];
         tasks.forEach(task => {
             cy.get('input[placeholder="Escribe tu tarea..."]').type(task);
