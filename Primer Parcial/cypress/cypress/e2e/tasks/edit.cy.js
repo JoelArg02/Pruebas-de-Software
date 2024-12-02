@@ -3,7 +3,7 @@ describe('Edit Task Tests', () => {
         cy.visit('/');
     });
 
-    it('Debe permitir editar una tarea existente', () => {
+    it('Debe permitir editars una tarea existente', () => {
         const task = 'Editable Task';
         const updatedTask = 'Updated Task';
 
