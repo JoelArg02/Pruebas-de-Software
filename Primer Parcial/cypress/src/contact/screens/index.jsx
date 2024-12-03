@@ -16,7 +16,7 @@ export default function Contact() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formMessage">
           <Form.Label>Mensaje</Form.Label>
-          <Form.Control as="textarea" rows={3} placeholder="Tu mensaje" />
+          <Form.Control as="textarea" rows={3} placeholder="Tu mensaje" maxLength={500}/>
         </Form.Group>
         <Button variant="primary" type="submit">
           Enviar
